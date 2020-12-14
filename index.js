@@ -11,7 +11,7 @@ const imageToBase64 = require('image-to-base64');
 const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
-const readTextInImage = require('./lib/ocr')
+const readTextInImage = require('./lib/ocr');
 //
 const BotName = 'Chopper'; // Nama Bot Whatsapp
 const instagramlu = 'https://instagram.com/serenyemnyem'; // Nama Instagramlu cok
@@ -71,11 +71,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] =>  bot by @caliph91_`))
+conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] =>  recode by: @serenyemnyem`))
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] =>  bot by @caliph91_`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] =>  recode by: @serenyemnyem`)
 })
 
 conn.on('message-new', async(m) =>
@@ -1038,26 +1038,27 @@ axios.get(`https://st4rz.herokuapp.com/api/simsimi?kata=${teks}`).then((res) => 
 if (text.includes('>loli')){
   var teks = text.replace(/>loli /, '')
     axios.get('https://st4rz.herokuapp.com/api/randomloli')
-    .then((res) => {
+    .then(
+    (res) => {
       imageToBase64(res.data.result)
         .then(
           (ress) => {
-            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
+            conn.sendMessage(id, buf, MessageType.image, { caption: 'OniChan~', quoted: m })
         })
     })
 }       
   if (text.includes('>waifu')){
   var teks = text.replace(/>waifu /, '')
-    axios.get('https://st4rz.herokuapp.com/api/waifu')
-    .then((res) => {
+    axios.get('https://arugaz.herokuapp.com/api/waifu'+teks)
+    .then(
+    (res) => {
       imageToBase64(res.data.image)
         .then(
           (ress) => {
-            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
+          let hasil = `Nama: ${res.data.name}\n${res.data.desc}`;
             var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
+            conn.sendMessage(id, buf, MessageType.image, { caption: hasil, quoted: m })
         })
     })
 }  
@@ -1151,7 +1152,6 @@ axios.get(`https://arugaz.herokuapp.com/api/puisi3`).then((res) => {
       imageToBase64(res.data.result)
         .then(
           (ress) => {
-            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image, { caption: 'Meow', quoted: m })
         })
