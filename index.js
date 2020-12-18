@@ -152,12 +152,12 @@ if (text.includes('>ytmp3')){
 }
 if (text.includes('>ytmp4')){
   var teks = text.replace(/>ytmp4 /, '')
-    axios.get('https://st4rz.herokuapp.com/api/ytv?url='+teks)
+    axios.get('https://st4rz.herokuapp.com/api/ytv2?url='+teks)
     .then((res) => {
       imageToBase64(res.data.thumb)
         .then(
           (ress) => {
-          let hasil = `Audio telah tersedia pada link di bawah, silahkan klik link dan download hasilnya\n👇👇👇👇👇👇👇👇👇\n\nJudul : ${res.data.title}\n\nLink: ${res.data.result}`;
+          let hasil = `Video telah tersedia pada link di bawah, silahkan klik link dan download hasilnya\n👇👇👇👇👇👇👇👇👇\n\nJudul : ${res.data.title}\n\nLink: ${res.data.result}`;
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image, { caption: hasil, quoted: m })
         })
@@ -264,13 +264,73 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 if (text.includes('assalamualaikum')){
 conn.sendMessage(id, ' _waalaikumsalam, _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
-else if (text == 'salam'){
+if (text.includes('bot')){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
+if (text.includes('Bot')){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
+else if (text == '!help'){
+conn.sendMessage(id, ' *_>help_* bukan ~!help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '!menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~!menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '#help'){
+conn.sendMessage(id, ' *_>help_* bukan ~#help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '#menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~#menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == ':help'){
+conn.sendMessage(id, ' *_>help_* bukan ~:help~' ,MessageType.text, { quoted: m });
+}
+else if (text == ':menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~:menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '.help'){
+conn.sendMessage(id, ' *_>help_* bukan ~.help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '.menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~.menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '-help'){
+conn.sendMessage(id, ' *_>help_* bukan ~-help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '-menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~-menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '$help'){
+conn.sendMessage(id, ' *_>help_* bukan ~$help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '$menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~$menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '=help'){
+conn.sendMessage(id, ' *_>help_* bukan ~=help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '=menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~=menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '&help'){
+conn.sendMessage(id, ' *_>help_* bukan ~&help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '&menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~&menu~' ,MessageType.text, { quoted: m });
+}
+else if (text == '~help'){
+conn.sendMessage(id, ' *_>help_* bukan ~~help~' ,MessageType.text, { quoted: m });
+}
+else if (text == '~menu'){
+conn.sendMessage(id, ' *_>help_* bukan ~~menu~' ,MessageType.text, { quoted: m });
+}
+if (text.includes('salam')){
 conn.sendMessage(id, ' _Waalaikumsalam, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m});
 }
 else if (text == 'asalamualaikum'){
 conn.sendMessage(id, ' _Waalaikumsalam, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Assalamualaikum'){
+if (text.includes('Assalamualaikum')){
 conn.sendMessage(id, ' _Waalaikumsalam, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 else if (text == 'p'){
@@ -289,7 +349,7 @@ else if (text == 'Halo'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 if (text.includes('Asu')){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (ASU)' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, 'LU ASU' ,MessageType.text, { quoted: m });
 }
 else if (text == '>ownerbot'){
 conn.sendMessage(id, ' *Owner Choper wa.me/+6285779386736* ' ,MessageType.text, { quoted: m });
@@ -303,110 +363,125 @@ conn.sendMessage(id, ' *Menampilkan Info!!!* ' ,MessageType.text, { quoted: m })
 else if (text == '>donasi'){
 conn.sendMessage(id, ' *Menampilkan Donasi!!!* ' ,MessageType.text, { quoted: m });
 }
-else if (text == '>creator'){
-conn.sendMessage(id, ' *Creator Choper wa.me/+6285722553839* ' ,MessageType.text, { quoted: m });
-}
 if (text.includes('Pagi')){
 conn.sendMessage(id, ' _Pagi juga, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 if (text.includes('Siang')){
 conn.sendMessage(id, ' _Siang juga, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Sore'){
+if (text.includes('Sore')){
 conn.sendMessage(id, ' _Sore juga, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Malam'){
+if (text.includes('Malam')){
 conn.sendMessage(id, ' _Malam juga, Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 //ngentod
 if (text.includes('Ngentod')){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (NGENTOD)' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, 'NANTI DI BERSETUBUH KELUAR AIR MATA😭' ,MessageType.text, { quoted: m });
 }
 if (text.includes('ngentod')){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (NGENTOD)' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, 'NANTI DI BERSETUBUH KELUAR AIR MATA😭' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Ngentd'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (NGENTOD)' ,MessageType.text, { quoted: m });
+if (text.includes('Ngentd')){
+conn.sendMessage(id, 'NANTI DI BERSETUBUH KELUAR AIR MATA😭' ,MessageType.text, { quoted: m });
 }
-else if (text == 'ngentd'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (NGENTOD)' ,MessageType.text, { quoted: m });
+if (text.includes('ngentd')){
+conn.sendMessage(id, 'NANTI DI BERSETUBUH KELUAR AIR MATA😭' ,MessageType.text, { quoted: m });
 }
 //anjing
-else if (text == 'Anjing'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('Anjing')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
-else if (text == 'anjing'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('anjing')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Ajg'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('Ajg')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
-else if (text == 'ajg'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('ajg')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Anjg'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('Anjg')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
-else if (text == 'anjg'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (Anjing)' ,MessageType.text, { quoted: m });
+if (text.includes('anjg')){
+conn.sendMessage(id, 'NGOK NGOK🐽' ,MessageType.text, { quoted: m });
 }
 //bacot
-else if (text == 'Bacot'){
-conn.sendMessage(id, 'LAH, OUT AJA LU KAN INI GROUP:)' ,MessageType.text, { quoted: m });
+if (text.includes('Bacot')){
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
 }
-else if (text == 'bacot'){
-conn.sendMessage(id, 'LAH, OUT AJA LU KAN INI GROUP:)' ,MessageType.text, { quoted: m });
+if (text.includes('bacot')){
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
+}
+if (text.includes('bacod')){
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
+}
+if (text.includes('Bacod')){
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
 }
 else if (text == 'Bct'){
-conn.sendMessage(id, 'LAH, OUT AJA LU KAN INI GROUP:)' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
 }
 else if (text == 'bct'){
-conn.sendMessage(id, 'LAH, OUT AJA LU KAN INI GROUP:)' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, 'APA!!?, GAK SENENG?' ,MessageType.text, { quoted: m });
 }
 //TOXIC
-else if (text == 'asu'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (ASU)' ,MessageType.text, { quoted: m });
+if (text.includes('asu')){
+conn.sendMessage(id, 'Lu Kaya Bebek' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Asu'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (ASU)' ,MessageType.text, { quoted: m });
-}
-else if (text == 'Bajingan'){
+if (text.includes('Bajingan')){
 conn.sendMessage(id, 'TOXIC TERDETEKSI (BAJINGAN)' ,MessageType.text, { quoted: m });
 }
-else if (text == 'bajingan'){
+if (text.includes('bajingan')){
 conn.sendMessage(id, 'TOXIC TERDETEKSI (BAJINGAN)' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Jembot'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (JEMBOT)' ,MessageType.text, { quoted: m });
+if (text.includes('Jembot')){
+conn.sendMessage(id, 'Aku Sih Lebih Doyan Jenggot' ,MessageType.text, { quoted: m });
 }
-else if (text == 'jembot'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (JEMBOT)' ,MessageType.text, { quoted: m });
+if (text.includes('jembot')){
+conn.sendMessage(id, 'Aku Sih Lebih Doyan Jenggot' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Kntl'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (kont*l)' ,MessageType.text, { quoted: m });
+if (text.includes('Kntl')){
+conn.sendMessage(id, 'apasih Bacot lu, ANJING, KONTOL MEMEK, JEMBOT' ,MessageType.text, { quoted: m });
 }
-else if (text == 'kntl'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (kont*l)' ,MessageType.text, { quoted: m });
+if (text.includes('kntl')){
+conn.sendMessage(id, 'apasih Bacot lu, ANJING, KONTOL MEMEK, JEMBOT' ,MessageType.text, { quoted: m });
 }
-else if (text == 'kontol'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (kont*l)' ,MessageType.text, { quoted: m });
+if (text.includes('kontol')){
+conn.sendMessage(id, 'apasih Bacot lu, ANJING, KONTOL MEMEK, JEMBOT' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Kontol'){
-conn.sendMessage(id, 'TOXIC TERDETEKSI (kont*l)' ,MessageType.text, { quoted: m });
+if (text.includes('Kontol')){
+conn.sendMessage(id, 'apasih Bacot lu, ANJING, KONTOL MEMEK, JEMBOT' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Test'){
+if (text.includes('Test')){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
+if (text.includes('test')){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 else if (text == 'Hai'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
+else if (text == 'hai'){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
 else if (text == 'Woi'){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
+else if (text == 'woi'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 else if (text == 'Eoy'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
+else if (text == 'eoy'){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
 else if (text == 'Hi'){
+conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
+}
+else if (text == 'hi'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 else if (text == 'Gan'){
@@ -421,7 +496,7 @@ conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>
 else if (text == 'Min'){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
-else if (text == 'Sayang'){
+if (text.includes('Sayang')){
 conn.sendMessage(id, ' _Iyah aku disini kak...ada yang bisa kami bantu? Ketik *>help* untuk melihat fitur bot kami🙏_ ' ,MessageType.text, { quoted: m });
 }
 else if (text == 'I love u'){
@@ -724,7 +799,7 @@ const get = require('got')
     var meninggal = (body[0]['meninggal']);
     var dirawat = (body[0]['dirawat']);
     console.log(body[0]['name'])
-    conn.sendMessage(id,`DATA WABAH COVID-19 TERBARU DI INDONESIA\n\n🔰Positif ➸  ${positif} \n🔰Sembuh ➸  ${sembuh} \n🔰Meninggal ➸  ${meninggal}\n🔰Dirawat ➸  ${dirawat}`, MessageType.text);
+    conn.sendMessage(id,`DATA WABAH COVID-19 TERBARU DI INDONESIA\n\n🔰Positif ➸  ${positif} \n🔰Sembuh ➸  ${sembuh} \n🔰Meninggal ➸  ${meninggal}\n🔰Dirawat ➸  ${dirawat}`, MessageType.text, { quoted: m });
 }
    if (text.includes(">quotes"))
    {
@@ -744,7 +819,7 @@ const get = require('got')
         
     
 	*~${author}*
-         `, MessageType.text
+         `, MessageType.text, { quoted: m}
             );
 
          });
@@ -775,7 +850,7 @@ const get = require('got')
  
 
 `,
- MessageType.text);
+ MessageType.text, { quoted: m });
   });
   }
   else if (text.includes(">pasangan ")) {
@@ -811,7 +886,7 @@ const get = require('got')
   }
     if (text.includes(">p cewek"))
    {
-    var items = ["ullzang girl", "cewe cantik", "hijab cantik", "korean girl"];
+    var items = ["ullzang girl", "korean girl", "cewe thailand", "chines girl"];
     var cewe = items[Math.floor(Math.random() * items.length)];
     var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
     
@@ -826,6 +901,93 @@ const get = require('got')
               conn.sendMessage(
             id,
               buf,MessageType.image, { caption: 'halo❤️',  quoted: m })
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error); // Logs an error if there was one
+            }
+        )
+    
+    });
+    }
+    
+    if (text.includes(">kucing"))
+   {
+    var items = ["kucing imut", "kucing"];
+    var cewe = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
+    
+    axios.get(url)
+      .then((result) => {
+        var b = JSON.parse(JSON.stringify(result.data));
+        var cewek =  b[Math.floor(Math.random() * b.length)];
+        imageToBase64(cewek) // Path to the image
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); // Ta-da	
+              conn.sendMessage(
+            id,
+              buf,MessageType.image, { caption: 'halo❤️',  quoted: m })
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error); // Logs an error if there was one
+            }
+        )
+    
+    });
+    }
+    
+    if (text.includes(">p ukhti"))
+   {
+    var items = ["hijab cantik", "cewek jilboobs"];
+    var cewe = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
+    
+    axios.get(url)
+      .then((result) => {
+        var b = JSON.parse(JSON.stringify(result.data));
+        var cewek =  b[Math.floor(Math.random() * b.length)];
+        imageToBase64(cewek) // Path to the image
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); // Ta-da	
+              conn.sendMessage(
+            id,
+              buf,MessageType.image, { caption: 'Hai, xixixi',  quoted: m })
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error); // Logs an error if there was one
+            }
+        )
+    
+    });
+    }
+    
+     if (text.includes(">cosplay"))
+   {
+    var items = ["cosplayer cantik", "cosplay sexy", "cosplay"];
+    var cewe = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
+    
+    axios.get(url)
+      .then((result) => {
+        var b = JSON.parse(JSON.stringify(result.data));
+        var cewek =  b[Math.floor(Math.random() * b.length)];
+        imageToBase64(cewek) // Path to the image
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); // Ta-da	
+              conn.sendMessage(
+            id,
+              buf,MessageType.image, { caption: 'Kojujin Sama😍',  quoted: m })
        
             }
         )
@@ -935,23 +1097,23 @@ if (text.includes(">lirik")){
 	axios.get(`https://arugaz.herokuapp.com/api/lirik?judul=${teks}`).then ((res) => {
 	     conn.sendMessage(id, 'Bentar, Lagi Di Proses!!!', MessageType.text)
 	 	let hasil = ` *🎧Lirik🎧 Lagu ${teks}:* \n\n\n _${res.data.result}_ `
-	conn.sendMessage(id, hasil, MessageType.text)
+	conn.sendMessage(id, hasil, MessageType.text, { quoted: m })
 	})
 }
 if (text.includes('>alay')){
 	const teks = text.replace(/>alay /, "")
 	axios.get(`https://arugaz.herokuapp.com/api/bapakfont?kata=${teks}`).then ((res) =>
 		{ let hasil = `${res.data.result}`
-		conn.sendMessage(id, hasil, MessageType.text)
+		conn.sendMessage(id, hasil, MessageType.text, { quoted: m })
 	})
 }
 if (text.includes('>ssweb')){
   var teks = text.replace(/>ssweb /, '')
     axios.get('https://mnazria.herokuapp.com/api/screenshotweb?url='+teks)
     .then((res) => {
-      imageToBase64(res.data.result)
+      imageToBase64(res.data.gambar)
         .then((ress) => {
-            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
+            conn.sendMessage(id, '[❗] SEDANG Diproses MENANGKAP LAYAR', MessageType.text, { quoted: m })
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image, { quoted: m })
         })
@@ -1047,21 +1209,7 @@ if (text.includes('>loli')){
             conn.sendMessage(id, buf, MessageType.image, { caption: 'OniChan~', quoted: m })
         })
     })
-}       
-  if (text.includes('>waifu')){
-  var teks = text.replace(/>waifu /, '')
-    axios.get('https://arugaz.herokuapp.com/api/waifu'+teks)
-    .then(
-    (res) => {
-      imageToBase64(res.data.image)
-        .then(
-          (ress) => {
-          let hasil = `Nama: ${res.data.name}\n${res.data.desc}`;
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image, { caption: hasil, quoted: m })
-        })
-    })
-}  
+}         
  if (text.includes('>jadwalTVnow')){
 const teks = text.replace(/>jadwalTVnow /, "")
 axios.get(`https://api.haipbis.xyz/jadwaltvnow`).then((res) => {
@@ -1097,13 +1245,14 @@ axios.get(`https://arugaz.herokuapp.com/api/cerpen`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
   })
  }
-if (text.includes('>infogempa')){
-const teks = text.replace(/>infogempa /, "")
-axios.get(`https://arugaz.herokuapp.com/api/infogempa`).then((res) => {
-    let hasil = `➸ Kedalaman : ${res.data.kedalaman}\n\n➸ koordinat : ${res.data.koordinat}\n\n➸lokasi : ${res.data.lokasi}\n\n➸magnitude : ${res.data.magnitude}\n\n➸potensi : ${res.data.potensi}\n\n➸waktu : ${res.data.waktu}`;
-    conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
-  })
- }
+if (text.includes(">infogempa")){
+  const teks = text.replace(/>infogempa /, "")
+  axios.get(`https://arugaz.herokuapp.com/api/infogempa`).then ((res) =>{
+  conn.sendMessage(id, 'Sedang Meneliti Goncangan, Silahkan Tunggu 1 Minggu', MessageType.text, { quoted: m })
+  let hasil = ` *INFO GEMPA* \n\ *Lokasi* : _${res.data.lokasi}_ \n *Kedalaman✍️* : _${res.data.kedalaman}_ \n *Koordinat✍️* : _${res.data.koordinat}_ \n *Magnitude✍️* : _${res.data.magnitude}_ \n *Waktu✍️* : _${res.data.waktu}_ `;
+  conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
+})
+}
  if (text.includes('>cektanggal')){
 const teks = text.replace(/>cektanggal /, "")
 axios.get(`https://api.haipbis.xyz/harinasional?tanggal=${teks}`).then((res) => {
@@ -1157,18 +1306,6 @@ axios.get(`https://arugaz.herokuapp.com/api/puisi3`).then((res) => {
         })
     })
 }
-  if (text.includes('>infogempa')){
-  var teks = text.replace(/>infogempa /, '')
-    axios.get('https://arugaz.herokuapp.com/api/infogempa')
-    .then((res) => {
-      imageToBase64(res.data.map)
-        .then(
-          (ress) => {
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image, { quoted: m })
-        })
-    })
-}  
 if (text.includes('>profileig')){
   var teks = text.replace(/>profileig /, '')
     axios.get('https://arugaz.herokuapp.com/api/stalk?username='+teks)
@@ -1246,7 +1383,7 @@ if (text.includes('>meme'))
 	var buf = Buffer.from(response, 'base64'); // Ta-da	
               conn.sendMessage(
             id,
-              buf,MessageType.image)
+              buf,MessageType.image, { caption: 'Woakwoakwoak🤣, Ngakak Hyung🏳️‍🌈',  quoted: m })
        
             }
         )
@@ -1292,6 +1429,7 @@ axios.get(`https://arugaz.herokuapp.com/api/corona?country=${teks}`).then((res) 
 const teks = text.replace(/>video18/, "")
 axios.get(`https://arugaz.herokuapp.com/api/indohot`).then((res) => {
     let hasil = `➡ ️Judul : ${res.data.result.judul}\n➡ Durasi : ${res.data.result.durasi}\n➡️ Genre : ${res.data.result.genre}\nLink Download⤵\n\n${res.data.result.url}️️`;
+    conn.sendMessage(id, 'DI MOHON PARA USER CHOPPER, MENGGUNAKAN FITUR INI DI PRIVATE CHAT AJA YAH!!!,DEMI KENYAMANAN PARA MEMBER', MessageType.text, { quoted: m })
     conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
   })
  }
@@ -1487,6 +1625,34 @@ if (text.includes('>aesthetic'))
     
     });
     }
+    if (text.includes(">waifu"))
+   {
+    var items = ["anime waifu"];
+    var cewe = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
+    
+    axios.get(url)
+      .then((result) => {
+        var b = JSON.parse(JSON.stringify(result.data));
+        var cewek =  b[Math.floor(Math.random() * b.length)];
+        imageToBase64(cewek) // Path to the image
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); // Ta-da	
+              conn.sendMessage(
+            id,
+              buf,MessageType.image, { caption: 'Ara ara~',  quoted: m })
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error); // Logs an error if there was one
+            }
+        )
+    
+    });
+    }
     if (text.includes(">cari"))
    {
 const teks = text.replace(/>cari /, "")
@@ -1505,7 +1671,7 @@ const teks = text.replace(/>cari /, "")
 	var buf = Buffer.from(response, 'base64'); // Ta-da	
               conn.sendMessage(
             id,
-              buf,MessageType.image)
+              buf,MessageType.image, { quoted: m })
        
             }
         )
@@ -1520,15 +1686,21 @@ const teks = text.replace(/>cari /, "")
 if (text.includes('>seberapagay')){
 const teks = text.replace(/>seberapagay /, "")
 axios.get(`https://arugaz.herokuapp.com/api/howgay`).then((res) => {
-    let hasil = `${res.data.desc}\n*Tingkay Gay Nya:* ${res.data.persen}`;
+    let hasil = `Pertanyaan: seberapa gay ${teks}\n*Persen:* ${res.data.persen}\n\n${res.data.desc}`;
     conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
 })
 }
 if (text.includes('>seberapabucin')){
 const teks = text.replace(/>seberapabucin /, "")
 axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
-	conn.sendMessage(id, 'Bentar, Lagi Di Proses!!!', MessageType.text)
-    let hasil = ` _${res.data.desc}_\n\n *Persen BUCIN lu: ${res.data.persen}`;
+	let hasil = ` Pertanyaan: seberapa bucin ${teks}\n\n *Persen: ${res.data.persen}`;
+    conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
+})
+}
+if (text.includes('>gombal')){
+const teks = text.replace(/>gombal /, "")
+axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
+	let hasil = `_${res.data.desc}_`;
     conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
 })
 }
@@ -1544,7 +1716,7 @@ else if (text == '>trial'){
 conn.sendMessage(id, ' *_Paket Trial_*\n\n\n- Join grup 2 jam\n\n\nTunggu Owner Merespon.' ,MessageType.text, { quoted: m });
 }
 else if (text == '>paketbayar'){
-conn.sendMessage(id, ' *_Paket Bayar_*\n\n|- Join Group 1 minggu : 3 Akun\n|- Join grup 1 bulan : 5 Akun \n|- Join grup Unlimited : 15 Akun/perbulan\n\nPembayaran Bisa Follow Instagram Saya:\n- Instagram : *@serenyemnyem*\n\nUntukmenghubungi Owner silahkan ketik *_>creator_*\Jika Ingin Donasi Ketik *_>donasi_*' ,MessageType.text, { quoted: m });
+conn.sendMessage(id, ' *_Paket Bayar_*\n\n|- Join Group 1 minggu : 3 Akun\n|- Join grup 1 bulan : 5 Akun \n|- Join grup Unlimited : 15 Akun/perbulan\n\nPembayaran Bisa Follow Instagram Saya:\n- Instagram : https://instagram.com/serenyemnyem\n\nUntukmenghubungi Owner silahkan ketik *_>creator_*\Jika Ingin Donasi Ketik *_>donasi_*' ,MessageType.text, { quoted: m });
 }
 //Cretaor
 else if (text == '>creator'){                         
@@ -1571,6 +1743,13 @@ conn.sendMessage(id, 'Perintah Diterima!!, Berhasil Menutup Grup\nSekarang Sekar
 if (text.includes(">leave")){
 const code = await conn.groupLeave (id.split("@s.whatsapp.net")[0])
 conn.sendMessage(id, + code , MessageType.text, { quoted: m})                                                       
+}
+if (text.includes(">linkgc")) {
+
+const code = await conn.groupInviteCode (id.split("@s.whatsapp.net")[0])
+
+conn.sendMessage(id, "https://chat.whatsapp.com/" + code , MessageType.text, { quoted: m })
+
 }
 //Game
 if (text.includes(">dadu")) {                              
@@ -1604,7 +1783,7 @@ if (text.includes('>stalkig')){
 
   var teks = text.replace(/>stalkig /, '')
 
-    axios.get('https://arugaz.herokuapp.com/api/stalk?username='+teks)
+    axios.get('https://st4rz.herokuapp.com/api/stalk?username='+teks)
 
     .then((res) => {
 
@@ -1614,7 +1793,7 @@ if (text.includes('>stalkig')){
 
           (ress) => {
 
-           let hasil = `User Ditemukan!!\n\n*➸ Nama :* ${res.data.Name}\n*➸ Username :* ${res.data.Username}\n*➸ Followers :* ${res.data.Jumlah_Followers}\n*➸ Mengikuti :* ${res.data.Jumlah_Following}\n*➸ Jumlah Post :* ${res.data.Jumlah_Post}\n*➸ Bio :* ${res.data.Biodata}`;
+           let hasil = `User Ditemukan!!\n\n*➸ Nama :* ${res.data.Name}\n*➸ Username :* ${res.data.Username}\n*➸ Followers :* ${res.data.Jumlah_Followers}\n*➸ Mengikuti :* ${res.data.Jumlah_Following}\n*➸ Jumlah Post :* ${res.data.Jumlah_Post}\n*➸ Bio :* ${res.data.Biodata}\nLink: https://instagram.com/${teks}`;
 
             var buf = Buffer.from(ress, 'base64')
 
@@ -1639,7 +1818,7 @@ if (text.includes('>infoanime')){
 }
 if (text.includes('>dlanime')){
   var teks = text.replace(/>dlanime /, '')
-    axios.get('https://alfians-api.herokuapp.com/api/kuso?q='+teks)
+    axios.get('https://st4rz.herokuapp.com/api/kuso?q='+teks)
     .then((res) => {
       imageToBase64(res.data.thumb)
         .then(
@@ -1659,7 +1838,7 @@ if (text.includes('>cersex2')){
 }
 else if (text == '>fun'){
   var teks = text.replace(/>fun /, '')
-    axios.get('https://st4rz.herokuapp.com/api/1cak'+teks)
+    axios.get('https://st4rz.herokuapp.com/api/1cak')
     .then((res) => {
       imageToBase64(res.data.image)
         .then(
@@ -1677,6 +1856,21 @@ axios.get(`https://api.banghasan.com/domain/hostsearch/${teks}`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
   })
  }
-     //Nyehh
+ if (text.includes('>bitly')){
+ const teks = text.replace(/>bitly /, "")
+const { BitlyClient } = require('bitly');
+const bitly = new BitlyClient('TOKEN BITLY', {});
+ 
+bitly
+  .shorten(teks)
+  .then(function(result) {
+    console.log(result);
+    conn.sendMessage(id , result.link, MessageType.text, { quoted: m })
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
+  }
+      //Nyehh
     
 })
