@@ -163,22 +163,6 @@ if (text.includes('>ytmp4')){
         })
     })
 }
-if (text.includes(">bitly")){
-const teks = text.replace(/>bitly /, "")
-conn.sendMessage(id, '[[❗] SEDANG DIPROSES', MessageType.text)
-axios.get(`https://api.haipbis.xyz/bitly?url=${teks}`).then((res) => {
-    let hasil = `ShortLinya Dah Jadi Bor :\n\n${res.data.result}`;
-    conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
-})
-}
-if (text.includes(">sholat")){
-  const teks = text.replace(/>sholat /, "")
-  axios.get(`https://api.haipbis.xyz/jadwalsholat?daerah=${teks}`).then ((res) =>{
-  conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
-  let hasil = `Jadwal sholat di ${teks} hari ini adalah\n\n⚡Imsyak : ${res.data.Imsyak}\n⚡Subuh : ${res.data.Subuh} WIB\n⚡Dzuhur : ${res.data.Dzuhur}WIB\n⚡Ashar : ${res.data.Ashar} WIB\n⚡Maghrib : ${res.data.Maghrib}\n⚡Isya : ${res.data.Isya} WIB\n⚡Tengah malam : ${res.data.Dhuha} WIB`;
-  conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
-})
-}
 
 if (text == '>menu'){
 var date = new Date();
@@ -1738,7 +1722,7 @@ let hasil = `${id.split("@s.whatsapp.net")[0]}`;
 
 conn.groupSettingChange (hasil, GroupSettingChange.messageSend, false);
 
-conn.sendMessage(id, 'Perintah Diterima!!, Berhasil Menutup Grup\nSekarang Sekarang Terbuka Untuk Semua Peserta', MessageType.text, { quoted: m })
+conn.sendMessage(id, 'Perintah Diterima!!, Berhasil Membuka Grup\nSekarang Sekarang Terbuka Untuk Semua Peserta', MessageType.text, { quoted: m })
 }
 if (text.includes(">leave")){
 const code = await conn.groupLeave (id.split("@s.whatsapp.net")[0])
@@ -1816,8 +1800,8 @@ if (text.includes('>infoanime')){
         })
     })
 }
-if (text.includes('>dlanime')){
-  var teks = text.replace(/>dlanime /, '')
+if (text.includes('>kuso')){
+  var teks = text.replace(/>kuso /, '')
     axios.get('https://st4rz.herokuapp.com/api/kuso?q='+teks)
     .then((res) => {
       imageToBase64(res.data.thumb)
@@ -1871,6 +1855,70 @@ bitly
     console.error(error);
   });
   }
+  if (text.includes(">hilih")){
+const teks = text.replace(/>hilih /, "")
+axios.get(`https://freerestapi.herokuapp.com/api/v1/hilih?kata=${teks}`).then((res) => {
+    let hasil = `${res.data.result}`;
+    conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
+  })
+ } 
+if (text.includes('>image18')){
+  var teks = text.replace(/>randomhentai /, '')
+    axios.get('https://freerestapi.herokuapp.com/api/v1/randomp')
+    .then((res) => {
+      imageToBase64(res.data.url)
+        .then(
+        (ress) => {
+           var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image, { caption: 'EHH!?', quoted: m })
+        })
+    })
+}
+ if (text.includes('>sholat')){
+  const teks = text.replace(/>sholat /, "")
+  axios.get(`https://docs-jojo.herokuapp.com/api/jadwalshalat?daerah=${teks}`).then ((res) =>{
+  conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text, { quoted: m })
+  let hasil = `Jadwal sholat di ${teks} hari ini adalah\n\n⚡Imsyak : ${res.data.result.Imsyak}\n⚡Subuh : ${res.data.result.Subuh} WIB\n⚡Dzuhur : ${res.data.result.Dzuhur}WIB\n⚡Ashar : ${res.data.result.Ashar} WIB\n⚡Maghrib : ${res.data.result.Maghrib}\n⚡Isya : ${res.data.result.Isya} WIB\n⚡Tengah malam : ${res.data.result.Dhuha} WIB`;
+  conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
+})
+}
+if (text.includes('nimequotes')){
+ const teks = text.replace(/>nimequotes /, "") 
+ axios.get(`https://docs-jojo.herokuapp.com/api/quotesnime/random`).then ((res) =>{
+ let hasil = `Anime: ${res.data.data.anime}\nKarakter: ${res.data.data.character}\nQuotes: ${res.data.data.quote}`;
+ conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
+})
+}
+if (text.includes('>alkitab')){
+  const teks = text.replace(/>alkitab /, "")
+  axios.get(`https://docs-jojo.herokuapp.com/api/alkitab`).then ((res) =>{
+  let hasil = `${res.data.result.ayat}\n\n${res.data.result.isi}`;
+  conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
+})
+}
+if (text.includes('>same')){
+  const teks = text.replace(/>same /, "")
+  axios.get(`https://docs-jojo.herokuapp.com/api/samehadaku?q=${teks}`).then ((res) =>{
+  let hasil = `Judul: ${res.data.title}\n\nLink: ${res.data.link}`;
+  conn.sendMessage(id, hasil, MessageType.text, { quoted: m });
+})
+}
+if (text.includes(">namaninja")){
+const teks = text.replace(/>namaninja /, "")
+axios.get(`https://api.terhambar.com/ninja?nama=${teks}`).then((res) => {
+	conn.sendMessage(id, '[WAIT] Searching...❗', MessageType.text)
+    let hasil = `Nama Ninja kamu🙂:\n\n${res.data.result.ninja}`;
+    conn.sendMessage(id, hasil ,MessageType.text, { quoted: m });
+})
+}
+if (text.includes('>tagme')) {
+ var nomor = m.participant
+ const options = {
+       text: `@${nomor.split("@s.whatsapp.net")[0]} tagged!`,
+       contextInfo: { mentionedJid: [nomor] }
+ }
+ conn.sendMessage(id, options, MessageType.text, { quoted: m })
+}
       //Nyehh
     
 })
